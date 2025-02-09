@@ -11,13 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log secret
-        run: echo ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+        run: echo ${{ secrets.GITHUB_TOKEN }}
       - uses: googleapis/release-please-action@v4
         with:
-          # this assumes that you have created a personal access token
-          # (PAT) and configured it as a GitHub action secret named
-          # `MY_RELEASE_PLEASE_TOKEN` (this secret name is not important).
-          token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+          # Using the default GITHUB_TOKEN which has the required permissions
+          # for release-please to create releases and pull requests
+          token: ${{ secrets.GITHUB_TOKEN }}
           # this is a built-in strategy in release-please, see "Action Inputs"
           # for more options
           release-type: simple
