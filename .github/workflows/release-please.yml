@@ -10,9 +10,17 @@ jobs:
   update-changelog:
     runs-on: ubuntu-latest
     steps:
-      - name: Release Please
-        uses: googleapis/release-please-action@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: node
-          # manifest-file: true
+          node-version: "22"
+
+      - name: Install Release Please
+        run: npm install -g release-please
+
+      - name: Run Release Please
+        run: |
+          release-please release-pr --token=${{ secrets.GITHUB_TOKEN }} --release-type=node --allow-merge-commits
