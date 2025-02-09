@@ -26,7 +26,9 @@ name: Release Please on PR
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-
+permissions:
+  contents: write
+  pull-requests: write
 jobs:
   update-changelog:
     runs-on: ubuntu-latest
@@ -42,9 +44,14 @@ jobs:
       - name: Install Release Please
         run: npm install -g release-please
 
+      # - uses: googleapis/release-please-action@v4
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     release-type: node
+
       - name: Generate Changelog & Version
         run: |
-          release-please release-pr --token=${{ secrets.GITHUB_TOKEN }}
+          release-please release-pr --token=${{ secrets.GITHUB_TOKEN }} --release-type=node
           git add .
           git commit -m "chore: update CHANGELOG and package.json" || echo "No changes to commit"
           git push origin HEAD:${{ github.head_ref }}
