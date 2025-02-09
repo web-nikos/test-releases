@@ -10,6 +10,8 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
+      - name: Log secret
+        run: echo ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
       - uses: googleapis/release-please-action@v4
         with:
           # this assumes that you have created a personal access token
