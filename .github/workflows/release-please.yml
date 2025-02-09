@@ -21,23 +21,26 @@
 #           # for more options
 #           release-type: node
 
-name: Release Please
+name: Release Please on PR
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
 jobs:
-  release:
+  update-changelog:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Release Please
+        run: npm install -g release-please
 
       - name: Generate Changelog & Version
         run: |
