@@ -1,11 +1,13 @@
 # Changelog
 
-## [1.1.0](https://github.com/web-nikos/test-releases/compare/v1.0.0...v1.1.0) (2025-02-09)
+### Features
 
+## [1.1.0](https://github.com/web-nikos/test-releases/compare/v1.0.0...v1.1.0) (2025-02-09)
 
 ### Features
 
 * update workflow for node release ([551109c](https://github.com/web-nikos/test-releases/commit/551109c8499b6e41761c9ded6132eae3f1e446d7))
+## [1.0.1](https://github.com/web-nikos/test-releases/compare/v1.0.0...v1.0.1) (2025-02-09)
 
 
 ### Bug Fixes
