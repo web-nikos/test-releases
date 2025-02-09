@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/web-nikos/test-releases/compare/v1.0.0...v1.1.0) (2025-02-09)
+
+
+### Features
+
+* update workflow for node release ([551109c](https://github.com/web-nikos/test-releases/commit/551109c8499b6e41761c9ded6132eae3f1e446d7))
+
+
+### Bug Fixes
+
+* remove color red ([c850888](https://github.com/web-nikos/test-releases/commit/c850888ec7df41522e8197a855eefaec77e6289c))
+
 ## 1.0.0 (2025-02-09)
 
 
