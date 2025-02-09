@@ -7,16 +7,20 @@ permissions:
   pull-requests: write
 name: release-please
 jobs:
-  release-please:
+  update-changelog:
     runs-on: ubuntu-latest
     steps:
-      - name: Log secret
-        run: echo ${{ secrets.GITHUB_TOKEN }}
-      - uses: googleapis/release-please-action@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          # Using the default GITHUB_TOKEN which has the required permissions
-          # for release-please to create releases and pull requests
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # this is a built-in strategy in release-please, see "Action Inputs"
-          # for more options
-          release-type: simple
+          node-version: "22"
+
+      - name: Install Release Please
+        run: npm install -g release-please
+
+      - name: Run Release Please
+        run: |
+          release-please release-pr --token=${{ secrets.GITHUB_TOKEN }} --release-type=node --repo-url=https://github.com/${{ github.repository }} --allow-merge-commits
