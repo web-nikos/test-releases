@@ -10,17 +10,7 @@ jobs:
   update-changelog:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: google-github-actions/release-please-action@v4
         with:
-          node-version: "22"
-
-      - name: Install Release Please
-        run: npm install -g release-please
-
-      - name: Run Release Please
-        run: |
-          release-please release-pr --token=${{ secrets.GITHUB_TOKEN }} --release-type=node --repo-url=https://github.com/${{ github.repository }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: "node"
