@@ -44,14 +44,15 @@ jobs:
       - name: Install Release Please
         run: npm install -g release-please
 
-      # - uses: googleapis/release-please-action@v4
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     release-type: node
+      - name: Release Please
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          manifest-file: "package.json"
 
-      - name: Generate Changelog & Version
-        run: |
-          release-please release-pr --token=${{ secrets.GITHUB_TOKEN }} --release-type=node
-          git add .
-          git commit -m "chore: update CHANGELOG and package.json" || echo "No changes to commit"
-          git push origin HEAD:${{ github.head_ref }}
+      # - name: Generate Changelog & Version
+      #   run: |
+      #     git add .
+      #     git commit -m "chore: update CHANGELOG and package.json" || echo "No changes to commit"
+      #     git push origin HEAD:${{ github.head_ref }}
